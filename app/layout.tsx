@@ -1,12 +1,21 @@
-import { ReactNode } from 'react';
-import "../styles.css";
+import {
+  AppNavLayout,
+  type AppNavLayoutProps,
+} from "../components/AppNavLayout";
+import '../styles.css';
 
-type Props = {
-  children: ReactNode;
-};
+interface RootLayoutProps extends AppNavLayoutProps { }
 
-// Since we have a `not-found.tsx` page on the root, a layout file
-// is required, even if it's just passing children through.
-export default function RootLayout({ children }: Props) {
-  return children;
+
+export default function RootLayout({
+  ...appNavLayoutProps
+}: RootLayoutProps) {
+  return (
+    <html>
+      <head />
+      <body>
+        <AppNavLayout {...appNavLayoutProps} />
+      </body>
+    </html>
+  );
 }
